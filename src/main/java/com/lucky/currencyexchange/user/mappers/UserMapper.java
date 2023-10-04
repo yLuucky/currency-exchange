@@ -11,9 +11,9 @@ public class UserMapper {
     public static User mapper(final UserDTO userDTO) {
         final User user = new User();
         user.setUserId(userDTO.getId());
-        user.setNickname(user.getNickname());
-        user.setEmail(user.getEmail());
-        user.setPassword(user.getPassword());
+        user.setNickname(userDTO.getNickname());
+        user.setEmail(userDTO.getEmail());
+        user.setPassword(userDTO.getUser_pass());
 
         return user;
     }
