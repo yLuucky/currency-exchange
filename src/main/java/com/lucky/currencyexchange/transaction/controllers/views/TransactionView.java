@@ -36,8 +36,8 @@ public class TransactionView {
         );
     }
 
-    public static List<TransactionView> from(List<TransactionDTO> dtos) {
-        return dtos.stream().map(TransactionView::from).collect(Collectors.toList());
+    public static List<TransactionView> from(List<TransactionDTO> transactionDTOS) {
+        return transactionDTOS.stream().map(TransactionView::from).collect(Collectors.toList());
     }
 
 }
