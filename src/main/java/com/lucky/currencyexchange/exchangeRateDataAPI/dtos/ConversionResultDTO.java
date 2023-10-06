@@ -1,5 +1,6 @@
 package com.lucky.currencyexchange.exchangeRateDataAPI.dtos;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,6 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ConversionResultDTO {
 
     @JsonProperty("result")
@@ -22,6 +24,7 @@ public class ConversionResultDTO {
     @Setter
     @NoArgsConstructor
     @AllArgsConstructor
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public class InfoDTO {
 
         private double rate;
