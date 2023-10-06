@@ -9,10 +9,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -39,7 +36,7 @@ public class TransactionController {
             @ApiResponse(responseCode = "400", description = "could not create a transaction")
     })
     @PostMapping
-    public ResponseEntity<TransactionView> create(final TransactionDTO transactionDTO, final String userId) {
+    public ResponseEntity<TransactionView> create(@RequestBody final TransactionDTO transactionDTO, @RequestParam String userId) {
         findUserByIdService.execute(UUID.fromString(userId));
         final TransactionDTO dto = createTransactionService.execute(transactionDTO);
         return ResponseEntity.status(201).body(TransactionView.from(dto));
