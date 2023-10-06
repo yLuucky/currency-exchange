@@ -1,6 +1,4 @@
-# currency-exchange
-
-## Documentation
+# Currency Exchange Documentation 
 
 ## How to run
 All you gonna need to run this project is having Java JDK 17 installed on system and run the sql database file.
