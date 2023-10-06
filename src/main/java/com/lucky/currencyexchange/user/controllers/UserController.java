@@ -9,9 +9,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("user")
@@ -29,7 +27,7 @@ public class UserController {
             @ApiResponse(responseCode = "400", description = "could not create a user")
     })
     @PostMapping
-    public ResponseEntity<UserView> create(final UserDTO userDTO) {
+    public ResponseEntity<UserView> create(@RequestBody final UserDTO userDTO) {
         final User user = createUserService.execute(userDTO);
         return ResponseEntity.status(201).body(UserViewMapper.mapper(user));
     }
