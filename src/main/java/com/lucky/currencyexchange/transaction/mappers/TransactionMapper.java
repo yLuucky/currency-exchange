@@ -11,6 +11,10 @@ public class TransactionMapper {
     public static Transaction mapper(final TransactionDTO transactionDTO) {
         final Transaction transaction = new Transaction();
         transaction.setUserId(transactionDTO.getUser().getUserId());
+        transaction.setInitialCurrency(transactionDTO.getInitialCurrency());
+        transaction.setFinalCurrency(transactionDTO.getFinalCurrency());
+        transaction.setOriginalValue(transactionDTO.getOriginalValue());
+        transaction.setConversionRate(transactionDTO.getConversionRate());
 
         return transaction;
     }
