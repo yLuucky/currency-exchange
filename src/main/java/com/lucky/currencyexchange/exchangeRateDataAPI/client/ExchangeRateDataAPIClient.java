@@ -28,7 +28,7 @@ public class ExchangeRateDataAPIClient {
         return transactionDTO;
     }
 
-    public static ConversionResultDTO convert(final double value, Currency originalCurrency, final Currency targetCurrency) throws IOException, InterruptedException {
+    public static ConversionResultDTO convert(final double value, final Currency originalCurrency, final Currency targetCurrency) throws IOException, InterruptedException {
         final String path = String.format("to=%s&from=%s&amount=%s", targetCurrency.apiValue, originalCurrency.apiValue, value);
 
         HttpRequest request = HttpRequest.newBuilder()
@@ -37,7 +37,7 @@ public class ExchangeRateDataAPIClient {
                 .method("GET", HttpRequest.BodyPublishers.noBody()).build();
 
         final HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        return mapper.convertValue(response.body(), ConversionResultDTO.class);
+        return mapper.readValue(response.body(), ConversionResultDTO.class);
     }
 
 }
