@@ -1,6 +1,5 @@
 package com.lucky.currencyexchange.transaction.dtos;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lucky.currencyexchange.transaction.enums.Currency;
 import com.lucky.currencyexchange.user.infra.db.entities.User;
 import lombok.AllArgsConstructor;
