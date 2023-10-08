@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "afab7ecc-aa91-4f01-93a9-549c7d7817a3",
+		"name": "Currency Exchange",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30298547"
+	},
+	"item": [
+		{
+			"name": "Create user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"\",\r\n  \"nickname\": \"lucky\",\r\n  \"email\": \"lucky@gmail.com\",\r\n  \"user_pass\": \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localHost}}/user",
+					"host": [
+						"{{localHost}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create transaction",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"transactionId\": \"\",\r\n  \"user\": {\r\n    \"userId\": \"\",\r\n    \"nickname\": \"\",\r\n    \"email\": \"lucky@gmail.com\",\r\n    \"user_pass\": \"1234\"\r\n  },\r\n  \"initialCurrency\": \"BRL\",\r\n  \"finalCurrency\": \"EUR\",\r\n  \"originalValue\": 5000,\r\n  \"convertedValue\": 0,\r\n  \"conversionRate\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localHost}}/transaction?userId=2ecc367d-ab06-40c6-8b97-0dc68956f302",
+					"host": [
+						"{{localHost}}"
+					],
+					"path": [
+						"transaction"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "2ecc367d-ab06-40c6-8b97-0dc68956f302",
+							"description": "User param"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localHost}}/transaction/",
+					"host": [
+						"{{localHost}}"
+					],
+					"path": [
+						"transaction",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "localHost",
+			"value": "http://localhost:8080"
+		}
+	]
+}
