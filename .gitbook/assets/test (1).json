@@ -1,0 +1,293 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "title": "OpenAPI definition",
+      "version": "v0"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:8080",
+        "description": "Generated server url"
+      }
+    ],
+    "paths": {
+      "/user": {
+        "post": {
+          "tags": [
+            "user-controller"
+          ],
+          "operationId": "create",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDTO"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "description": "created user",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserView"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "could not create a user",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserView"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/transaction": {
+        "post": {
+          "tags": [
+            "transaction-controller"
+          ],
+          "operationId": "create_1",
+          "parameters": [
+            {
+              "name": "userId",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionDTO"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "description": "created a transaction",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TransactionView"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "could not create a transaction",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TransactionView"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/transaction/{id}": {
+        "get": {
+          "tags": [
+            "transaction-controller"
+          ],
+          "operationId": "show",
+          "parameters": [
+            {
+              "name": "userId",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "get transactions",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/TransactionView"
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "could not get transactions",
+              "content": {
+                "*/*": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/TransactionView"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "UserDTO": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "nickname": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "user_pass": {
+              "type": "string"
+            }
+          }
+        },
+        "UserView": {
+          "type": "object",
+          "properties": {
+            "userId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "nickname": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            }
+          }
+        },
+        "TransactionDTO": {
+          "type": "object",
+          "properties": {
+            "transactionId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "user": {
+              "$ref": "#/components/schemas/User"
+            },
+            "initialCurrency": {
+              "type": "string",
+              "enum": [
+                "BRL",
+                "USD",
+                "EUR",
+                "JPY"
+              ]
+            },
+            "finalCurrency": {
+              "type": "string",
+              "enum": [
+                "BRL",
+                "USD",
+                "EUR",
+                "JPY"
+              ]
+            },
+            "originalValue": {
+              "type": "number",
+              "format": "double"
+            },
+            "conversionRate": {
+              "type": "number",
+              "format": "double"
+            },
+            "convertedValue": {
+              "type": "number",
+              "format": "double"
+            }
+          }
+        },
+        "User": {
+          "type": "object",
+          "properties": {
+            "userId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "nickname": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            }
+          }
+        },
+        "TransactionView": {
+          "type": "object",
+          "properties": {
+            "transactionId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "user": {
+              "$ref": "#/components/schemas/User"
+            },
+            "initialCurrency": {
+              "type": "string",
+              "enum": [
+                "BRL",
+                "USD",
+                "EUR",
+                "JPY"
+              ]
+            },
+            "finalCurrency": {
+              "type": "string",
+              "enum": [
+                "BRL",
+                "USD",
+                "EUR",
+                "JPY"
+              ]
+            },
+            "originalValue": {
+              "type": "number",
+              "format": "double"
+            },
+            "convertedValue": {
+              "type": "number",
+              "format": "double"
+            },
+            "conversionRate": {
+              "type": "number",
+              "format": "double"
+            }
+          }
+        }
+      }
+    }
+  }
