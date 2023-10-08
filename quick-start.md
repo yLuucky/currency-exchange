@@ -1,13 +1,5 @@
 # Quick Start
 
-## Get your API keys
-
-{% hint style="warning" %}
-Your API requests are authenticated using API keys. Any request that doesn't include an API key will return an error.
-{% endhint %}
-
-You can generate an API key from : [here](https://apilayer.com/marketplace/currency\_data-api?utm\_source=apilayermarketplace\&utm\_medium=featured)
-
 ## How Run the project
 
 {% hint style="info" %}
