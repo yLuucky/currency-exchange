@@ -2,6 +2,7 @@
 
 * [Welcome!](README.md)
 * [Quick Start](quick-start.md)
+* [Features](features.md)
 * [Motivation for the main technology choices](motivation-for-the-main-technology-choices.md)
 
 ## Reference
