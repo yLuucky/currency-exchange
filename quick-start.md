@@ -10,6 +10,14 @@ All you gonna need to run this project is having Java JDK 17 installed on system
 mvn spring-boot:run
 ```
 
+<details>
+
+<summary>Swagger</summary>
+
+click [here ](http://localhost:8080/swagger-ui/index.html)to redirect to swagger
+
+</details>
+
 ## Make your first request
 
 To make your first request, send an authenticated request to the user endpoint. This will create a `user`, which is nice.
